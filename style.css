@@ -1,0 +1,16 @@
+/*
+Theme Name: Travel Tours
+Author: Danny
+Author URI: http://www.hostinger.com/tutorials
+Description: My first responsive HTML5 theme
+Version: 1.0
+*/
+
+
+* {
+  box-sizing: border-box;
+}
+body {
+    background-color: #f9f9f9;
+    font-family: Helvetica;
+}
