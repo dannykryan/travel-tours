@@ -6,3 +6,9 @@ function add_normalize_CSS() {
 }
 
 add_action('wp_enqueue_scripts', 'add_normalize_CSS');
+
+// Custoim image sizes
+function custom_image_sizes() {
+    add_image_size( 'card', 36, 24, true ); // Custom pay-option card size
+}
+add_action( 'after_setup_theme', 'custom_image_sizes' );
