@@ -1,6 +1,19 @@
 <?php get_header(); ?>
-    <main>
-        <h1><?php the_title(); ?></h1>
+<main class="wrap">
+  <section class="content-area content-thin">
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <article class="article-full">
+        <header>
+          <h2><?php the_title(); ?></h2>
+          By: <?php the_author(); ?>
+        </header>
         <?php the_content(); ?>
-    </main>
+      </article>
+<?php endwhile; else : ?>
+      <article>
+        <p>Sorry, no page content was found!</p>
+      </article>
+<?php endif; ?>
+  </section><?php get_sidebar(); ?>
+</main>
 <?php get_footer(); ?>

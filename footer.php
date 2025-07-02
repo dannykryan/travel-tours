@@ -1,4 +1,4 @@
-    <footer>
+    <footer class="site-footer">
         <?php if( get_field('copyright_notice', 'options' ) ): ?>
             <p><?php echo esc_html( get_field('copyright_notice', 'options') ); ?></p>
         <?php endif; ?>

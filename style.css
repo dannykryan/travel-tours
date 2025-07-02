@@ -14,3 +14,29 @@ body {
     background-color: #f9f9f9;
     font-family: Helvetica;
 }
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+.site-footer ul {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+.content-area {
+  padding: 1.5rem 2rem;
+}

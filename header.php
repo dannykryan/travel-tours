@@ -8,6 +8,6 @@
    <?php wp_head(); ?>
  </head>
 <body  <?php body_class(); ?> >
-    <header class="my-logo">
-        <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/Images/logo.png" alt="Site Logo" width="50px" height="50px"></a></h1>
+    <header class="site-header">
+        <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Site Logo"></a></h1>
     </header>
