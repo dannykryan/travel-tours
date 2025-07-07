@@ -6,37 +6,38 @@ Description: A travel website
 Version: 1.0
 */
 
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-}
-body {
-    background-color: #f9f9f9;
-    font-family: Helvetica;
-}
+@layer base {
+  
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight text-gray-900 mt-8 mb-4;
+  }
 
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-}
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold leading-snug text-gray-800 mt-8 mb-3;
+  }
 
-.site-footer ul {
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  h3 {
+    @apply text-xl md:text-2xl font-semibold leading-snug text-gray-800 mt-6 mb-3;
+  }
 
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-}
+  h4 {
+    @apply text-lg md:text-xl font-medium text-gray-700 mt-5 mb-2;
+  }
 
-.content-area {
-  padding: 1.5rem 2rem;
+  h5 {
+    @apply text-base md:text-lg font-medium text-gray-700 mt-4 mb-2;
+  }
+
+  h6 {
+    @apply text-sm md:text-base font-medium text-gray-600 uppercase tracking-wide mt-4 mb-2;
+  }
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 }

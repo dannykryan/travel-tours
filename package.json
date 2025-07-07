@@ -1,5 +1,15 @@
 {
+  "scripts": {
+    "build": "postcss style.css -o dist/style.css",
+    "watch": "postcss style.css -o dist/style.css --watch"
+  },
   "devDependencies": {
     "dd": "^0.26.0"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.11"
   }
 }
