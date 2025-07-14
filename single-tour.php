@@ -2,6 +2,7 @@
 
 <main class="wrap">
   <section class="content-area">
+    <a href="<?php echo get_home_url(); ?>">Home</a> > <a href="<?php echo get_post_type_archive_link( 'tour' ); ?>">Tours Archive</a> > <?php the_title(); ?>
     <h1 class="mb-12"><?php the_title(); ?></h1>
     
     <div id="key-information" class="flex gap-8 px-12 my-12">
