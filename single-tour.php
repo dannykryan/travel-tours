@@ -2,13 +2,33 @@
 
 <main class="wrap">
   <section class="content-area">
-    <a href="<?php echo get_home_url(); ?>">Home</a> > <a href="<?php echo get_post_type_archive_link( 'tour' ); ?>">Tours Archive</a> > <?php the_title(); ?>
+    
+    <!-- Breadcrumbs -->
+    <a href="<?php echo get_home_url(); ?>">Home</a> > <a href="<?php echo get_post_type_archive_link( 'tour' ); ?>">Tours Archive</a> > <?php the_terms( $post->ID, 'destination', '', ', ', ' ' ); ?>
+
+    <!-- Best Seller / Free Cancellation bubbles -->
+    <div class="flex flex-row gap-2 ">
+      <?php if(get_field('best_seller')) : ?>
+        <div class="bg-orange-100 text-orange-600 px-4 py-1 rounded-full">
+          <span>Best Seller</span>
+        </div>
+      <?php endif; ?>
+
+      <?php if(get_field('free_cancellations')) : ?>
+        <div class="bg-gray-100 text-gray-900 px-4 py-1 rounded-full">
+          <span>Free cancellations</span>
+        </div>
+      <?php endif; ?>
+    </div>
+
+    <!-- Heading -->
     <h1 class="mb-12"><?php the_title(); ?></h1>
+    
     
     <div id="key-information" class="flex gap-8 px-12 my-12">
       <p><?php the_field('overall_rating'); ?></p>
       <p><?php the_field('location'); ?></p>
-      <p><?php the_field('previous_bookings'); ?>+ booked</p>
+      <p><?php the_field('previous_bookings'); ?></p>
 
     </div>
     
