@@ -9,7 +9,6 @@ Version: 1.0
 @import "tailwindcss";
 
 @layer base {
-  
   h1 {
     @apply text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight text-gray-900 mt-8 mb-4;
   }
@@ -35,9 +34,27 @@ Version: 1.0
   }
 
   * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
 }
+
+/* Gallery Items */
+.gallery-items {
+  @apply w-full h-[500px] grid-cols-4;
+  .gallery-item-0 {
+    @apply col-start-1 col-end-3 row-start-1 row-end-3 overflow-hidden;
+  }
+  .gallery-item-1 {
+    @apply col-start-3 col-end-5 row-start-1 row-end-2 overflow-hidden;
+  }
+  .gallery-item-2 {
+    @apply col-start-3 col-end-4 row-start-2 row-end-3 overflow-hidden;
+  }
+  .gallery-item-3 {
+    @apply col-start-4 col-end-5 row-start-2 row-end-3 overflow-hidden;
+  }
+}
+
