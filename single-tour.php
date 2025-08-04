@@ -125,14 +125,39 @@
     </div>
 
     <h2>Itinerary</h2>
-    <?php if( have_rows('itinerary_per_day') ): ?>
-      <ul>
-        <?php while( have_rows('itinerary_per_day') ): the_row(); ?>
-          <li>
-            <?php the_sub_field('day'); ?> - <?php the_sub_field('information'); ?>
-            <p><?php the_sub_field('extra_information'); ?></p>
+    <?php
+    $rows = get_field('itinerary_per_day');
+    if ($rows):
+    ?>
+      <ul class="itinerary-list relative list-none">
+        <div class="absolute h-full left-4 w-[1px] border-l-1 border-orange-500 border-dashed"></div>
+        <?php
+        $total = count($rows);
+        $i = 0;
+        foreach ($rows as $row):
+          $i++;
+          // Choose a different div for first and last
+          if ($i === 1) {
+            // First item
+            $circle = '<div class="h-8 w-8 rounded-full bg-orange-500"></div>';
+          } elseif ($i === $total) {
+            // Last item
+            $circle = '<div class="h-8 w-8 rounded-full bg-orange-500"></div>';
+          } else {
+            // Middle items
+            $circle = '<div class="h-4 w-4 ml-2 mt-1 rounded-full bg-white border-2 border-orange-500"></div>';
+          }
+        ?>
+          <li class="relative flex items-start gap-4 mb-10 mt-0 z-10">
+            <?php echo $circle; ?>
+            <span>
+              <?php echo esc_html($row['day']); ?> - <?php echo esc_html($row['information']); ?>
+              <?php if (!empty($row['extra_information'])): ?>
+                <br><small class="block pt-6"><?php echo esc_html($row['extra_information']); ?></small>
+              <?php endif; ?>
+            </span>
           </li>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
       </ul>
     <?php else: ?>
       <p>No itinerary available.</p>
@@ -140,14 +165,55 @@
 
     <h2>FAQ</h2>
     <?php if( have_rows('faq') ): ?>
-      <ul>
-        <?php while( have_rows('faq') ): the_row(); ?>
-          <li>
-            <?php the_sub_field('question'); ?>
-            <p><?php the_sub_field('answer'); ?></p>
+      <ul class="faq-accordion">
+        <?php $faq_index = 0; while( have_rows('faq') ): the_row(); $faq_index++; ?>
+          <li class="border border-gray-200 bg-white mb-2 rounded relative">
+            <button type="button" class="w-full text-left font-medium px-4 py-3 focus:outline-none faq-toggle" data-faq="faq-<?php echo $faq_index; ?>">
+              <?php the_sub_field('question'); ?>
+            </button>
+            <div id="faq-<?php echo $faq_index; ?>" class="faq-answer px-4 py-3 hidden">
+              <div class="absolute top-2 right-2 h-8 w-8 rounded-full bg-orange-500 indicator"></div>
+              <p><?php the_sub_field('answer'); ?></p>
+            </div>
           </li>
         <?php endwhile; ?>
       </ul>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var answer = document.getElementById(this.getAttribute('data-faq'));
+              if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+              } else {
+                answer.classList.add('hidden');
+              }
+            });
+          });
+          // Show/hide indicator
+          document.querySelectorAll('.faq-answer').forEach(function(ans) {
+            var indicator = ans.querySelector('.indicator');
+            if (ans.classList.contains('hidden')) {
+              indicator.style.display = 'none';
+            } else {
+              indicator.style.display = 'block';
+            }
+          });
+          document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var answer = document.getElementById(this.getAttribute('data-faq'));
+              var indicator = answer.querySelector('.indicator');
+              setTimeout(function() {
+                if (answer.classList.contains('hidden')) {
+                  indicator.style.display = 'none';
+                } else {
+                  indicator.style.display = 'block';
+                }
+              }, 10);
+            });
+          });
+        });
+      </script>
     <?php else: ?>
       <p>No FAQs available.</p>
     <?php endif; ?>
